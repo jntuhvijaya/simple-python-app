@@ -1,1 +1,16 @@
+version: 0.1
 
+files:
+  - source: /
+    destination: /home/ubuntu/simple-python-app/
+
+scripts:
+  BeforeDeploy:
+    - location: scripts/stop_app.sh
+      timeout: 300
+      runas: root
+
+  AfterDeploy:
+    - location: scripts/start_app.sh
+      timeout: 600
+      runas: root
